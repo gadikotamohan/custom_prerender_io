@@ -1,0 +1,25 @@
+{
+  "apps" : [{
+    "name"      : "prerender_io",
+    "script"    : "server.js",
+    "watch"       : false,
+    "max_restarts": 2,
+    "max_memory_restart": "200M",
+    "instances": 3,
+    "exec_mode" : "cluster"
+  }],
+  "deploy" : {
+    "dev" : {
+      "user" : "zaggle",
+      "host" : "dev.zaggle.in",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:gadikotamohan/custom_prerender_io.git",
+      "path" : "/mnt/web/prerender_io",
+      "post-deploy" : "npm install && export PATH=$PATH:$(npm bin) && pm2 startOrRestart ecosystem.json --env production",
+      "env"  : {
+        "PORT": "3003",
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
