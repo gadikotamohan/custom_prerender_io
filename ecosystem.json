@@ -9,7 +9,7 @@
     "exec_mode" : "cluster"
   }],
   "deploy" : {
-    "dev" : {
+    "master" : {
       "user" : "zaggle",
       "host" : "dev.zaggle.in",
       "ref"  : "origin/master",
